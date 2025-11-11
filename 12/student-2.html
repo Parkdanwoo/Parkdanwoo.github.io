@@ -10,15 +10,20 @@
 <body>
   <div id="container">
     <h1>수강생 명단</h1>
+    <div id="result"></div>
+  </div>
+  <script>
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "student-2.json");
     xhr.send();
+
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
         let students = JSON.parse(xhr.responseText);
         renderHTML(students);
       }
-  };
+    };
+
     function renderHTML(contents) {
       let htmlString = "";
       for (let content of contents) {
@@ -32,9 +37,7 @@
         `;
       }
       document.getElementById("result").innerHTML = htmlString;
-  }
-    <div id="result"></div>
-  </div>
-
+    }
+  </script>
 </body>
 </html>
